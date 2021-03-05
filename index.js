@@ -15,8 +15,9 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(name, price, category){
+  let item = {name, price, category}
+  return item;
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -28,6 +29,16 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
+
+const cheeseburger = createMenuItem('cheeseburger', 9, 'Dinner');
+console.log(cheeseburger);
+
+const chickenSandwich = createMenuItem('Chicken Sandwich', 8, 'Lunch');
+console.log(chickenSandwich);
+
+const beer = createMenuItem('Beer', 5, 'Drinks');
+console.log(beer);
+
 
 
 
@@ -48,9 +59,22 @@ export const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  /*Your code here*/
+  discount: function(disc) {
+    let price = 0;
+    if(disc == 'teacher') {
+      price = this.price * 0.75;
+    } else if (disc == 'student') {
+      price = this.price * 0.75;
+    } else if (disc == 'public') {
+      price = this.price * 0.9;
+    }
+    return price;
+  }
 }
 
+console.log(burger.discount('teacher'));
+console.log(burger.discount('student'));
+console.log(burger.discount('public'));
 
 
 ///////////////Reviews (MVP)///////////////////
@@ -70,7 +94,7 @@ Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
 
-
+console.log(reviews[5].feedback);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -79,6 +103,8 @@ Using the reviews array above do the following: (no function needed)
   2. log the whole array to the console, make sure the new review is inside of it   
 */
 
+reviews.push({name: 'Angelo', rating: 2, feedback:'Raw food, no flavor'});
+console.log(reviews);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -87,7 +113,8 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   2. log the reviews array to the console to check your work
 */
 
-
+reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
+console.log(reviews);
 
 
 
@@ -102,9 +129,14 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(array, arrNum) {
+  let specificName = array[arrNum].name;
+  let specificRating = array[arrNum].rating;
+  let specificFeedback = array[arrNum].feedback;
+  return specificName + " gave the restaurant a " + specificRating + " star review, and their feedback was: " + specificFeedback;
 }
+
+console.log(getReviewByIndex(reviews, 7));
 
 
   
@@ -121,9 +153,12 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(array) {
+  let i = array.length -1;
+  return array[i].name + " gave the restaurant a " + array[i].rating + " star review, and their feedback was: " + array[i].feedback;
 } 
+
+console.log(getLastReview(reviews));
 
 
 
@@ -143,9 +178,17 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+function getReviewByRating(array, arrRating) {
+  let arrayByRating = []
+  for(i = 0; i < array.length; i++) {
+    if(array[i].rating == arrRating) {
+      arrayByRating.push(array[i]);
+    }
   }
+  return arrayByRating;
+}
+
+console.log(getReviewByRating(reviews, 2));
 
   
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
